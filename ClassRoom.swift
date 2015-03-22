@@ -10,7 +10,7 @@ import Foundation
 import UIKit
 
 let classKey = "CLASS_KEY"
-
+let studentsKey = "STUDENTS_KEY"
 class ClassRoom: NSObject, NSCoding{
     
     let defaults = NSUserDefaults.standardUserDefaults()
@@ -27,13 +27,14 @@ class ClassRoom: NSObject, NSCoding{
     //var students:[Student] = sharedInstance.students
     //var teacher = Teacher(currentClass: sharedInstance)
     func encodeWithCoder(aCoder: NSCoder) {
-        
+        aCoder.encodeObject(students, forKey: studentsKey)
     }
     override init() {
         
     }
     required init(coder aDecoder: NSCoder) {
-        
+        //super.init()
+        students = aDecoder.decodeObjectForKey(studentsKey) as [Student]
     }
     func addStudent(name: String, value: Int){
         self.students.append(Student(name: name, startingPoints: value))
