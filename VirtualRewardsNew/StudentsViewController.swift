@@ -43,18 +43,20 @@ class StudentsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         println( " in searchBar");
-        ClassRoom.sharedInstance.students = VirtualRewardsClient.sharedInstance.searchWithTerm(searchText)
+        //ClassRoom.sharedInstance.students = VirtualRewardsClient.sharedInstance.searchWithTerm(searchText)
         tableView.reloadData()
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         println("test4");
-        //println(ClassRoom.sharedInstance.students.count)
-        return ClassRoom.sharedInstance.students.count
+        println(VirtualRewardsClient.sharedInstance.getClass().students)
+        //if VirtualRewardsClient.sharedInstance.getClass().students == nil{
+        return VirtualRewardsClient.sharedInstance.getClass().students.count
+        //}
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("studentCell") as StudentTableViewCell
-        cell.student = ClassRoom.sharedInstance.students[indexPath.row]
+        cell.student = VirtualRewardsClient.sharedInstance.getClass().students[indexPath.row]
         cell.index = indexPath.row
         return cell
     }

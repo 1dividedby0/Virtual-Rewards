@@ -28,7 +28,10 @@ class AddStudentViewController: UIViewController {
         let namesString: String = namesTextField.text
         if namesString != ""{
         let namesArray: [String] = split(namesString){$0 == ","}
-        ClassRoom.sharedInstance.addStudents(namesArray)
+        var currentClass: ClassRoom = VirtualRewardsClient.sharedInstance.getClass()
+        currentClass.addStudents(namesArray)
+        println(currentClass.students.count)
+        VirtualRewardsClient.sharedInstance.updateSavedClass(currentClass)
         println(namesArray)
         }
         self.navigationController!.dismissViewControllerAnimated(true, completion: nil)

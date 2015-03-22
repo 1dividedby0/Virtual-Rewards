@@ -17,6 +17,8 @@ class StudentTableViewCell: UITableViewCell {
     
     @IBOutlet weak var pointsLabel: UILabel!
     
+    var currentClass = VirtualRewardsClient.sharedInstance.getClass()
+    
     var student: Student?
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -32,14 +34,15 @@ class StudentTableViewCell: UITableViewCell {
     }
     @IBAction func plusAction(sender: AnyObject) {
         student!.points = student!.points + 1
-        ClassRoom.sharedInstance.students[index!] = student!
-        VirtualRewardsClient.sharedInstance.updateSavedClass()
+        
+        currentClass.students[index!] = student!
+        VirtualRewardsClient.sharedInstance.updateSavedClass(currentClass)
     }
     
     @IBAction func minusAction(sender: AnyObject) {
         student!.points = student!.points - 1
-        ClassRoom.sharedInstance.students[index!] = student!
-        VirtualRewardsClient.sharedInstance.updateSavedClass()
+        currentClass.students[index!] = student!
+        VirtualRewardsClient.sharedInstance.updateSavedClass(currentClass)
     }
 
 }

@@ -21,7 +21,7 @@ class VirtualRewardsClient{
     
     func searchWithTerm(term: String) -> [Student]{
         var defaults = NSUserDefaults.standardUserDefaults()
-        var currentClass = ClassRoom.sharedInstance
+        var currentClass = getClass()
         var students = currentClass.students
         var selectedStudents: [Student] = [Student]()
         for student in students{
@@ -36,34 +36,34 @@ class VirtualRewardsClient{
         return selectedStudents
     }
     
-    func updateSavedClass(){
+    func updateSavedClass(classRoom:ClassRoom){
         var defaults = NSUserDefaults.standardUserDefaults()
-        var encodedObject: NSData = NSKeyedArchiver.archivedDataWithRootObject(ClassRoom.sharedInstance)
+        println("\(classRoom.students)odsljuf-98ioa[hjsodfjakdsnf[kjin")
+        var encodedObject: NSData = NSKeyedArchiver.archivedDataWithRootObject(classRoom)
         defaults.setObject(encodedObject, forKey: classKey)
         defaults.synchronize()
     }
     
     func getClass() -> ClassRoom{
         var defaults = NSUserDefaults.standardUserDefaults()
-        println(defaults.objectForKey(classKey))
+        //println(defaults.objectForKey(classKey))
         var currentClass:ClassRoom!
         if let data = defaults.objectForKey(classKey) as? NSData{
             //let unarc = NSKeyedUnarchiver(forReadingWithData: data)
             //unarc.setClass(Class.self, forClassName: "Class")
             currentClass = NSKeyedUnarchiver.unarchiveObjectWithData(data) as ClassRoom
-            println("entering")
+            println("entering \(currentClass.students)")
             //Class.sharedInstance.students = currentClass.students
             //Class.sharedInstance.teacher = currentClass.teacher
             return currentClass
             
-        } /*else {
-            var newClass = Class()
+        } else {
+            var newClass = ClassRoom()
             newClass.students = [Student]()
             var encodedObject: NSData = NSKeyedArchiver.archivedDataWithRootObject(newClass)
             defaults.setObject(encodedObject, forKey: classKey)
             defaults.synchronize()
             return newClass
-        }*/
-        return ClassRoom()
+        }
     }
 }

@@ -15,52 +15,48 @@ class ClassRoom: NSObject, NSCoding{
     
     let defaults = NSUserDefaults.standardUserDefaults()
     
-    class var sharedInstance: ClassRoom{
+    /*class var sharedInstance: ClassRoom{
         struct Static{
             static var instance:ClassRoom = VirtualRewardsClient.sharedInstance.getClass()
         }
         println("test6 Classroom sharedInstance");
         return Static.instance
-    }
-    var students:[Student]!
+    }*/
+    var students:[Student] = [Student]()
     
-    func setUp(){
-    
-    }
     //var students:[Student] = sharedInstance.students
     //var teacher = Teacher(currentClass: sharedInstance)
     func encodeWithCoder(aCoder: NSCoder) {
         
     }
     override init() {
-         println( "test7 init of classroom\(students)");
-        if (students == nil) {
-            students = [Student]()
-            println( "test8 init of classroom");
-            VirtualRewardsClient.sharedInstance.updateSavedClass()
-            println( "test9 init of classroom");
-        }
+        println("test7 init of classroom\(students)");
+        students = VirtualRewardsClient.sharedInstance.getClass().students
+        println( "test8 init of classroom");
+        
     }
     required init(coder aDecoder: NSCoder) {
         
     }
     func addStudent(name: String, value: Int){
-        ClassRoom.sharedInstance.students.append(Student(name: name, startingPoints: value))
-        ClassRoom.sharedInstance.students = students
+        self.students.append(Student(name: name, startingPoints: value))
         //defaults.setObject(ClassRoom.sharedInstance, forKey: classKey)
-        VirtualRewardsClient.sharedInstance.updateSavedClass()
+        VirtualRewardsClient.sharedInstance.updateSavedClass(self)
     }
     
     func addStudent(name: String){
-        ClassRoom.sharedInstance.students.append(Student(name: name))
-        ClassRoom.sharedInstance.students = students
+        //println(VirtualRewardsClient.sharedInstance.getClass().students)
+        students.append(Student(name: name))
+        printClass()
         //defaults.setObject(ClassRoom.sharedInstance, forKey: classKey)
-        VirtualRewardsClient.sharedInstance.updateSavedClass()
+        //VirtualRewardsClient.sharedInstance.updateSavedClass(self)
     }
     
     func addStudents(students: [String]){
+        self.students = VirtualRewardsClient.sharedInstance.getClass().students
         for name in students{
-            ClassRoom.sharedInstance.addStudent(name)
+            println(name)
+           self.addStudent(name)
         }
     }
     
