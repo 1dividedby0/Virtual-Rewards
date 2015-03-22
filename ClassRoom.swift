@@ -30,9 +30,6 @@ class ClassRoom: NSObject, NSCoding{
         
     }
     override init() {
-        println("test7 init of classroom\(students)");
-        students = VirtualRewardsClient.sharedInstance.getClass().students
-        println( "test8 init of classroom");
         
     }
     required init(coder aDecoder: NSCoder) {
