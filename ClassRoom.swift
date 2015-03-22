@@ -27,14 +27,15 @@ class ClassRoom: NSObject, NSCoding{
     //var students:[Student] = sharedInstance.students
     //var teacher = Teacher(currentClass: sharedInstance)
     func encodeWithCoder(aCoder: NSCoder) {
+        println(students)
         aCoder.encodeObject(students, forKey: studentsKey)
     }
     override init() {
-        
+        super.init()
     }
-    required init(coder aDecoder: NSCoder) {
-        //super.init()
-        students = aDecoder.decodeObjectForKey(studentsKey) as [Student]
+    required convenience init(coder aDecoder: NSCoder) {
+        self.init()
+        students = aDecoder.decodeObjectForKey(studentsKey) as [Student]!
     }
     func addStudent(name: String, value: Int){
         self.students.append(Student(name: name, startingPoints: value))
