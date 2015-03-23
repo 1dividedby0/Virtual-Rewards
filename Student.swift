@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class Student{
+class Student: NSObject, NSCoding{
     let name:String!
     var points:Int!
     init(name: String){
@@ -20,7 +20,18 @@ class Student{
         self.name = name
         self.points = points
     }
-    init(){
+    override init(){
         
     }
+    
+    func encodeWithCoder(aCoder: NSCoder) {
+        aCoder.encodeObject(name, forKey: "name")
+        aCoder.encodeInteger(points, forKey: "points")
+    }
+    
+    required init(coder aDecoder: NSCoder) {
+       self.name = aDecoder.decodeObjectForKey("name") as String
+       self.points = aDecoder.decodeIntegerForKey("points") as Int
+    }
+    
 }

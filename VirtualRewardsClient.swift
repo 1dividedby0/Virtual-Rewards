@@ -20,10 +20,12 @@ class VirtualRewardsClient{
     }
     
     func searchWithTerm(term: String) -> [Student]{
-        var defaults = NSUserDefaults.standardUserDefaults()
         var currentClass = getClass()
         var students = currentClass.students
         var selectedStudents: [Student] = [Student]()
+        if term == ""{
+            return currentClass.students
+        }
         for student in students{
             let name = student.name
             if name.rangeOfString(term) != nil{

@@ -31,10 +31,9 @@ class ClassRoom: NSObject, NSCoding{
         aCoder.encodeObject(students, forKey: studentsKey)
     }
     override init() {
-        super.init()
+        
     }
-    required convenience init(coder aDecoder: NSCoder) {
-        self.init()
+    required init(coder aDecoder: NSCoder) {
         students = aDecoder.decodeObjectForKey(studentsKey) as [Student]!
     }
     func addStudent(name: String, value: Int){

@@ -32,7 +32,7 @@ class AddStudentViewController: UIViewController {
         currentClass.addStudents(namesArray)
         println(currentClass.students.count)
         VirtualRewardsClient.sharedInstance.updateSavedClass(currentClass)
-        println(namesArray)
+        println(VirtualRewardsClient.sharedInstance.getClass().printClass())
         }
         self.navigationController!.dismissViewControllerAnimated(true, completion: nil)
     }

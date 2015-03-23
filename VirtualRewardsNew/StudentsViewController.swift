@@ -12,16 +12,16 @@ class StudentsViewController: UIViewController, UITableViewDataSource, UITableVi
 
     @IBOutlet weak var tableView: UITableView!
     
-    //weak var currentClass = VirtualRewardsClient.sharedInstance.getClass()
-
-    //lazy var searchBar:UISearchBar = UISearchBar(frame: CGRectMake(0, 0, 200, 20))
     var searchBar:UISearchBar!
-    
+    var studentsToBeDisplayed:[Student]!
+    var refreshControl: UIRefreshControl!
     override func viewDidLoad() {
         super.viewDidLoad()
-        println("\(VirtualRewardsClient.sharedInstance) sdf")
-        //VirtualRewardsClient().sharedInstance.getClass()
-        //VirtualRewardsClient.sharedInstance.getClass()
+        self.refreshControl = UIRefreshControl()
+        self.refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+        self.tableView.addSubview(refreshControl)
+        studentsToBeDisplayed = VirtualRewardsClient.sharedInstance.getClass().students
+        tableView.reloadData()
         searchBar = UISearchBar(frame: CGRectMake(0, 0, 200, 20))
         println("test");
         tableView.dataSource = self
@@ -30,34 +30,44 @@ class StudentsViewController: UIViewController, UITableViewDataSource, UITableVi
         searchBar.placeholder = "Search Students"
         var leftNavBarButton = UIBarButtonItem(customView: searchBar)
         self.navigationItem.leftBarButtonItem = leftNavBarButton
-         println("test1");
-        tableView.registerClass(StudentTableViewCell.self, forCellReuseIdentifier: "studentCell")
-        println("test2");
-        //ClassRoom.sharedInstance.printClass()
-        println("test3");
     }
-    
+    func refresh(){
+        tableView.reloadData()
+        refreshControl.endRefreshing()
+        VirtualRewardsClient.sharedInstance.getClass().printClass()
+    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        println( " in searchBar");
-        //ClassRoom.sharedInstance.students = VirtualRewardsClient.sharedInstance.searchWithTerm(searchText)
+        println(" in searchBar");
+        println("studentsToBeDisplayed\(studentsToBeDisplayed)")
+        var classRoom = VirtualRewardsClient.sharedInstance.getClass()
+        studentsToBeDisplayed = VirtualRewardsClient.sharedInstance.searchWithTerm(searchText)
+        if searchText == ""{
+            studentsToBeDisplayed = VirtualRewardsClient.sharedInstance.getClass().students
+        }
         tableView.reloadData()
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        println("test4");
-        println(VirtualRewardsClient.sharedInstance.getClass().students)
+        println("test4\(studentsToBeDisplayed.count)");
+        //println(VirtualRewardsClient.sharedInstance.getClass().students)
         //if VirtualRewardsClient.sharedInstance.getClass().students == nil{
-        return VirtualRewardsClient.sharedInstance.getClass().students.count
+        return studentsToBeDisplayed.count
         //}
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        println("studentsToBeDisplayed\(studentsToBeDisplayed)")
+        let currentClass = VirtualRewardsClient.sharedInstance.getClass()
         let cell = tableView.dequeueReusableCellWithIdentifier("studentCell") as StudentTableViewCell
-        cell.student = VirtualRewardsClient.sharedInstance.getClass().students[indexPath.row]
+        let student:Student? = studentsToBeDisplayed[indexPath.row]
+        if student != nil{
+        cell.student = student
         cell.index = indexPath.row
+        }
+        cell.reload()
         return cell
     }
     /*
