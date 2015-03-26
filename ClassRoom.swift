@@ -15,17 +15,8 @@ class ClassRoom: NSObject, NSCoding{
     
     let defaults = NSUserDefaults.standardUserDefaults()
     
-    /*class var sharedInstance: ClassRoom{
-        struct Static{
-            static var instance:ClassRoom = VirtualRewardsClient.sharedInstance.getClass()
-        }
-        println("test6 Classroom sharedInstance");
-        return Static.instance
-    }*/
     var students:[Student] = [Student]()
     
-    //var students:[Student] = sharedInstance.students
-    //var teacher = Teacher(currentClass: sharedInstance)
     func encodeWithCoder(aCoder: NSCoder) {
         println(students)
         aCoder.encodeObject(students, forKey: studentsKey)
@@ -53,9 +44,18 @@ class ClassRoom: NSObject, NSCoding{
     func addStudents(students: [String]){
         self.students = VirtualRewardsClient.sharedInstance.getClass().students
         for name in students{
-            println(name)
-           self.addStudent(name)
+            if VirtualRewardsClient.sharedInstance.searchWithTerm(name).isEmpty{
+                var selected = name
+                selected.replaceRange(name.startIndex...name.startIndex, with: String(name[name.startIndex]).capitalizedString)
+                self.addStudent(selected)
+            }
         }
+    }
+    
+    func removeStudent(index: Int){
+        students = VirtualRewardsClient.sharedInstance.getClass().students
+        students.removeAtIndex(index)
+        printClass()
     }
     
     func printClass(){

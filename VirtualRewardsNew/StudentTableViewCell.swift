@@ -11,7 +11,9 @@ import UIKit
 class StudentTableViewCell: UITableViewCell {
     let defaults = NSUserDefaults.standardUserDefaults()
     
+    var selectedStudents:[Student]!
     var index:Int?
+    var inSearch:Bool!
     
     @IBOutlet weak var nameLabel: UILabel!
     
@@ -41,8 +43,13 @@ class StudentTableViewCell: UITableViewCell {
         currentClass = VirtualRewardsClient.sharedInstance.getClass()
         student!.points = student!.points + 1
         println(currentClass.printClass())
+        if inSearch == false{
         currentClass.students[index!] = student!
         VirtualRewardsClient.sharedInstance.updateSavedClass(currentClass)
+        }else{
+        //let indexto = index + (currentClass.students.count - selectedStudents.count)
+        //currentClass.students[indexto]
+        }
         reload()
     }
     

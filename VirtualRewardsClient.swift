@@ -20,15 +20,18 @@ class VirtualRewardsClient{
     }
     
     func searchWithTerm(term: String) -> [Student]{
+        var term1 = term
         var currentClass = getClass()
         var students = currentClass.students
         var selectedStudents: [Student] = [Student]()
-        if term == ""{
+        if term1 == ""{
             return currentClass.students
+        }else{
+            term1.replaceRange(term1.startIndex...term1.startIndex, with: String(term1[term1.startIndex]).capitalizedString)
         }
         for student in students{
             let name = student.name
-            if name.rangeOfString(term) != nil{
+            if name.rangeOfString(term1) != nil{
                 selectedStudents.append(student)
                 continue
             }else{

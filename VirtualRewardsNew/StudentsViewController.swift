@@ -8,19 +8,28 @@
 
 import UIKit
 
-class StudentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate {
+class StudentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate,UIScrollViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
     var searchBar:UISearchBar!
-    var studentsToBeDisplayed:[Student]!
+    var studentsToBeDisplayed:[Student] = [Student]()
     var refreshControl: UIRefreshControl!
+    override func viewWillAppear(animated: Bool) {
+        studentsToBeDisplayed = VirtualRewardsClient.sharedInstance.getClass().students
+        tableView.reloadData()
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.refreshControl = UIRefreshControl()
         self.refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
         self.tableView.addSubview(refreshControl)
+        
         studentsToBeDisplayed = VirtualRewardsClient.sharedInstance.getClass().students
+        if studentsToBeDisplayed == VirtualRewardsClient.sharedInstance.getClass().students{
+            VirtualRewardsClient.sharedInstance.getClass().printClass()
+        }
         tableView.reloadData()
         searchBar = UISearchBar(frame: CGRectMake(0, 0, 200, 20))
         println("test");
@@ -40,6 +49,16 @@ class StudentsViewController: UIViewController, UITableViewDataSource, UITableVi
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    
+    func scrollViewWillBeginDragging(scrollView: UIScrollView) {
+        self.searchBar.resignFirstResponder()
+    }
+    
+    func searchBarTextDidEndEditing(searchBar: UISearchBar) {
+        println("DidEndEditing")
+        self.searchBar.resignFirstResponder()
+    }
+    
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
         println(" in searchBar");
         println("studentsToBeDisplayed\(studentsToBeDisplayed)")
@@ -50,12 +69,26 @@ class StudentsViewController: UIViewController, UITableViewDataSource, UITableVi
         }
         tableView.reloadData()
     }
+    
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+        return true;
+    }
+    
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete{
+            let classRoom = VirtualRewardsClient.sharedInstance.getClass()
+            classRoom.removeStudent(indexPath.row)
+            VirtualRewardsClient.sharedInstance.updateSavedClass(classRoom)
+            studentsToBeDisplayed.removeAtIndex(indexPath.row)
+            self.tableView.beginUpdates()
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
+            self.tableView.endUpdates()
+        }
+    }
+    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         println("test4\(studentsToBeDisplayed.count)");
-        //println(VirtualRewardsClient.sharedInstance.getClass().students)
-        //if VirtualRewardsClient.sharedInstance.getClass().students == nil{
         return studentsToBeDisplayed.count
-        //}
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -66,6 +99,8 @@ class StudentsViewController: UIViewController, UITableViewDataSource, UITableVi
         if student != nil{
         cell.student = student
         cell.index = indexPath.row
+        cell.selectedStudents = studentsToBeDisplayed
+        cell.inSearch = studentsToBeDisplayed.endIndex != currentClass.students.endIndex
         }
         cell.reload()
         return cell
