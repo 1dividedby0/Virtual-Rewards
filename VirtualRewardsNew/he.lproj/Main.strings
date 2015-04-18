@@ -1,0 +1,60 @@
+
+/* Class = "UIButton"; normalTitle = "Sign Up for Virtual Rewards"; ObjectID = "BJ6-jo-7dO"; */
+"BJ6-jo-7dO.normalTitle" = "Sign Up for Virtual Rewards";
+
+/* Class = "UILabel"; text = "Whoops! Username is already taken"; ObjectID = "ELM-ob-5sx"; */
+"ELM-ob-5sx.text" = "Whoops! Username is already taken";
+
+/* Class = "UILabel"; text = "Virtual Rewards"; ObjectID = "EN1-Hy-gha"; */
+"EN1-Hy-gha.text" = "Virtual Rewards";
+
+/* Class = "UIButton"; normalTitle = "+"; ObjectID = "FlG-ED-s0N"; */
+"FlG-ED-s0N.normalTitle" = "+";
+
+/* Class = "UITextField"; placeholder = "e.g. Bob,Dan,Katie"; ObjectID = "Kcc-PC-1P7"; */
+"Kcc-PC-1P7.placeholder" = "e.g. Bob,Dan,Katie";
+
+/* Class = "UIBarButtonItem"; title = "Done"; ObjectID = "NDn-sN-ZID"; */
+"NDn-sN-ZID.title" = "Done";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "OeE-gm-DsR"; */
+"OeE-gm-DsR.placeholder" = "Password";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "Zmy-Ib-Wuz"; */
+"Zmy-Ib-Wuz.placeholder" = "Username";
+
+/* Class = "UIBarButtonItem"; title = "Add Students"; ObjectID = "azJ-Mk-yC3"; */
+"azJ-Mk-yC3.title" = "Add Students";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "bCE-Fs-Rn9"; */
+"bCE-Fs-Rn9.title" = "Cancel";
+
+/* Class = "UILabel"; text = "Some Error"; ObjectID = "gmi-Kk-Rzs"; */
+"gmi-Kk-Rzs.text" = "Some Error";
+
+/* Class = "UILabel"; text = "Dhruv Mangtani"; ObjectID = "lL7-is-Q7R"; */
+"lL7-is-Q7R.text" = "Dhruv Mangtani";
+
+/* Class = "UITextField"; placeholder = "Confirm Password"; ObjectID = "lN4-BM-xit"; */
+"lN4-BM-xit.placeholder" = "Confirm Password";
+
+/* Class = "UIBarButtonItem"; title = "Logout"; ObjectID = "n9g-M8-bTY"; */
+"n9g-M8-bTY.title" = "Logout";
+
+/* Class = "UILabel"; text = ": 15"; ObjectID = "pLN-Q7-v7R"; */
+"pLN-Q7-v7R.text" = ": 15";
+
+/* Class = "UIButton"; normalTitle = "-"; ObjectID = "qdL-ht-4gX"; */
+"qdL-ht-4gX.normalTitle" = "-";
+
+/* Class = "UITextField"; placeholder = "Password"; ObjectID = "rRv-79-FQv"; */
+"rRv-79-FQv.placeholder" = "Password";
+
+/* Class = "UIButton"; normalTitle = "Sign Up"; ObjectID = "umI-3b-uay"; */
+"umI-3b-uay.normalTitle" = "Sign Up";
+
+/* Class = "UIBarButtonItem"; title = "Cancel"; ObjectID = "xEB-Xa-JX9"; */
+"xEB-Xa-JX9.title" = "Cancel";
+
+/* Class = "UITextField"; placeholder = "Username"; ObjectID = "zRy-CL-bwG"; */
+"zRy-CL-bwG.placeholder" = "Username";

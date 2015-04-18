@@ -10,40 +10,55 @@ import UIKit
 
 class StudentsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate, UISearchBarDelegate,UIScrollViewDelegate {
 
+    @IBOutlet weak var addStudentButton: UIBarButtonItem!
+    @IBOutlet weak var logoutButton: UIBarButtonItem!
     @IBOutlet weak var tableView: UITableView!
-    
     var searchBar:UISearchBar!
     var studentsToBeDisplayed:[Student] = [Student]()
     var refreshControl: UIRefreshControl!
+    var timer:NSTimer = NSTimer()
     override func viewWillAppear(animated: Bool) {
         studentsToBeDisplayed = VirtualRewardsClient.sharedInstance.getClass().students
+        var total = VirtualRewardsClient.sharedInstance.getClass().findTotal()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Total Points: \(total)")
+        self.tableView.addSubview(refreshControl)
         tableView.reloadData()
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.barTintColor = UIColor.orangeColor()
+        //self.addStudentButton.tintColor = UIColor.cyanColor()
         self.refreshControl = UIRefreshControl()
+        self.tableView.backgroundColor = UIColor.cyanColor()
         self.refreshControl.addTarget(self, action: "refresh", forControlEvents: UIControlEvents.ValueChanged)
+        var total = VirtualRewardsClient.sharedInstance.getClass().findTotal()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Total Points: \(total)")
         self.tableView.addSubview(refreshControl)
-        
+        NSTimer.scheduledTimerWithTimeInterval(2.5, target: self, selector: Selector("reloadTotal"), userInfo: nil, repeats: true)
         studentsToBeDisplayed = VirtualRewardsClient.sharedInstance.getClass().students
         if studentsToBeDisplayed == VirtualRewardsClient.sharedInstance.getClass().students{
-            VirtualRewardsClient.sharedInstance.getClass().printClass()
+            //VirtualRewardsClient.sharedInstance.getClass().printClass()
         }
         tableView.reloadData()
         searchBar = UISearchBar(frame: CGRectMake(0, 0, 200, 20))
-        println("test");
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
         searchBar.placeholder = "Search Students"
         var leftNavBarButton = UIBarButtonItem(customView: searchBar)
-        self.navigationItem.leftBarButtonItem = leftNavBarButton
-    }
+        self.navigationItem.titleView = self.searchBar
+        searchBar.barTintColor = UIColor.cyanColor()
+        }
     func refresh(){
         tableView.reloadData()
         refreshControl.endRefreshing()
         VirtualRewardsClient.sharedInstance.getClass().printClass()
+    }
+    func reloadTotal(){
+        var total = VirtualRewardsClient.sharedInstance.getClass().findTotal()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Total Points: \(total)")
+        self.tableView.addSubview(refreshControl)
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -55,13 +70,10 @@ class StudentsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func searchBarTextDidEndEditing(searchBar: UISearchBar) {
-        println("DidEndEditing")
         self.searchBar.resignFirstResponder()
     }
     
     func searchBar(searchBar: UISearchBar, textDidChange searchText: String) {
-        println(" in searchBar");
-        println("studentsToBeDisplayed\(studentsToBeDisplayed)")
         var classRoom = VirtualRewardsClient.sharedInstance.getClass()
         studentsToBeDisplayed = VirtualRewardsClient.sharedInstance.searchWithTerm(searchText)
         if searchText == ""{
@@ -77,9 +89,14 @@ class StudentsViewController: UIViewController, UITableViewDataSource, UITableVi
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete{
             let classRoom = VirtualRewardsClient.sharedInstance.getClass()
-            classRoom.removeStudent(indexPath.row)
+            if studentsToBeDisplayed.endIndex != classRoom.students.endIndex{
+                classRoom.removeStudent(studentsToBeDisplayed[indexPath.row])
+                studentsToBeDisplayed.removeAtIndex(indexPath.row)
+            }else{
+                studentsToBeDisplayed.removeAtIndex(indexPath.row)
+                classRoom.students.removeAtIndex(indexPath.row)
+            }
             VirtualRewardsClient.sharedInstance.updateSavedClass(classRoom)
-            studentsToBeDisplayed.removeAtIndex(indexPath.row)
             self.tableView.beginUpdates()
             self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Fade)
             self.tableView.endUpdates()
@@ -87,19 +104,19 @@ class StudentsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        println("test4\(studentsToBeDisplayed.count)");
+        var total = VirtualRewardsClient.sharedInstance.getClass().findTotal()
+        self.refreshControl.attributedTitle = NSAttributedString(string: "Total Points: \(total)")
         return studentsToBeDisplayed.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        println("studentsToBeDisplayed\(studentsToBeDisplayed)")
         let currentClass = VirtualRewardsClient.sharedInstance.getClass()
-        let cell = tableView.dequeueReusableCellWithIdentifier("studentCell") as StudentTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier("studentCell") as! StudentTableViewCell
+        cell.backgroundColor = UIColor.cyanColor()
         let student:Student? = studentsToBeDisplayed[indexPath.row]
         if student != nil{
         cell.student = student
         cell.index = indexPath.row
-        cell.selectedStudents = studentsToBeDisplayed
         cell.inSearch = studentsToBeDisplayed.endIndex != currentClass.students.endIndex
         }
         cell.reload()

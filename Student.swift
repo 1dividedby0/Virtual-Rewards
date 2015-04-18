@@ -12,6 +12,7 @@ import UIKit
 class Student: NSObject, NSCoding{
     let name:String!
     var points:Int!
+    var rewards:[String]!
     init(name: String){
         self.name = name
         self.points = 0
@@ -20,9 +21,9 @@ class Student: NSObject, NSCoding{
         self.name = name
         self.points = points
     }
-    override init(){
+    //override init(){
         
-    }
+    //}
     
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(name, forKey: "name")
@@ -30,7 +31,7 @@ class Student: NSObject, NSCoding{
     }
     
     required init(coder aDecoder: NSCoder) {
-       self.name = aDecoder.decodeObjectForKey("name") as String
+       self.name = aDecoder.decodeObjectForKey("name") as! String
        self.points = aDecoder.decodeIntegerForKey("points") as Int
     }
     

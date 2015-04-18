@@ -12,33 +12,46 @@ import UIKit
 let classKey = "CLASS_KEY"
 let studentsKey = "STUDENTS_KEY"
 class ClassRoom: NSObject, NSCoding{
-    
+    var total:Int = 0
     let defaults = NSUserDefaults.standardUserDefaults()
     
     var students:[Student] = [Student]()
-    
+
     func encodeWithCoder(aCoder: NSCoder) {
-        println(students)
         aCoder.encodeObject(students, forKey: studentsKey)
     }
     override init() {
         
     }
     required init(coder aDecoder: NSCoder) {
-        students = aDecoder.decodeObjectForKey(studentsKey) as [Student]!
+        students = aDecoder.decodeObjectForKey(studentsKey) as! [Student]!
     }
+    
+    func findTotal() -> Int{
+        for student in students{
+            self.total += student.points
+        }
+        return self.total
+    }
+    
+    func updateStudent(student:Student){
+        var index = 0
+        for stud in students{
+            if stud.name == student.name{
+                students[index] = student
+            }
+            index++
+        }
+    }
+    
     func addStudent(name: String, value: Int){
         self.students.append(Student(name: name, startingPoints: value))
-        //defaults.setObject(ClassRoom.sharedInstance, forKey: classKey)
         VirtualRewardsClient.sharedInstance.updateSavedClass(self)
     }
     
     func addStudent(name: String){
-        //println(VirtualRewardsClient.sharedInstance.getClass().students)
         students.append(Student(name: name))
         printClass()
-        //defaults.setObject(ClassRoom.sharedInstance, forKey: classKey)
-        //VirtualRewardsClient.sharedInstance.updateSavedClass(self)
     }
     
     func addStudents(students: [String]){
@@ -52,9 +65,15 @@ class ClassRoom: NSObject, NSCoding{
         }
     }
     
-    func removeStudent(index: Int){
+    func removeStudent(student:Student){
         students = VirtualRewardsClient.sharedInstance.getClass().students
-        students.removeAtIndex(index)
+        var indices = 0
+            for stud in students{
+                if stud.name == student.name{
+                    students.removeAtIndex(indices)
+                }
+                indices++
+            }
         printClass()
     }
     

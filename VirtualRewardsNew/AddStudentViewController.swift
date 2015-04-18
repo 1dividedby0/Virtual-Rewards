@@ -8,14 +8,17 @@
 
 import UIKit
 
-class AddStudentViewController: UIViewController {
+class AddStudentViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var namesTextField: UITextField!
-    
+    @IBOutlet weak var doneButton: UIBarButtonItem!
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        namesTextField.delegate = self
+        namesTextField.addTarget(self, action: "edit", forControlEvents: UIControlEvents.EditingChanged)
         // Do any additional setup after loading the view.
+        self.navigationController?.navigationBar.backgroundColor = UIColor.orangeColor()
+        self.view.backgroundColor = UIColor.cyanColor()
     }
 
     override func didReceiveMemoryWarning() {
@@ -23,6 +26,16 @@ class AddStudentViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func edit(){
+        println("dsg")
+        println(namesTextField.text)
+        if namesTextField.text.isEmpty == false{
+            println("editing")
+            doneButton.enabled = true
+        }else{
+            doneButton.enabled = false
+        }
+    }
     
     @IBAction func addStudentAction(sender: AnyObject) {
         let namesString: String = namesTextField.text
@@ -30,9 +43,7 @@ class AddStudentViewController: UIViewController {
         let namesArray: [String] = split(namesString){$0 == ","}
         var currentClass: ClassRoom = VirtualRewardsClient.sharedInstance.getClass()
         currentClass.addStudents(namesArray)
-        println(currentClass.students.count)
         VirtualRewardsClient.sharedInstance.updateSavedClass(currentClass)
-        println(VirtualRewardsClient.sharedInstance.getClass().printClass())
         }
         self.navigationController!.dismissViewControllerAnimated(true, completion: nil)
     }

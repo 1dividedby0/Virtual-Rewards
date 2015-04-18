@@ -13,9 +13,7 @@ class VirtualRewardsClient{
     class var sharedInstance: VirtualRewardsClient{
         struct Static{
             static var instance = VirtualRewardsClient()
-           // println("sdfd")
         }
-        println("\(Static.instance) sdfd")
         return Static.instance
     }
     
@@ -42,32 +40,25 @@ class VirtualRewardsClient{
     }
     
     func updateSavedClass(classRoom:ClassRoom){
-        var defaults = NSUserDefaults.standardUserDefaults()
-        println("\(classRoom.students)odsljuf-98ioa[hjsodfjakdsnf[kjin")
         var encodedObject: NSData = NSKeyedArchiver.archivedDataWithRootObject(classRoom)
-        defaults.setObject(encodedObject, forKey: classKey)
-        defaults.synchronize()
+        var currentUser:PFUser = PFUser.currentUser()!
+        currentUser["class"] = encodedObject
+        currentUser.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
+            if error == nil{
+            }
+        }
     }
     
     func getClass() -> ClassRoom{
-        var defaults = NSUserDefaults.standardUserDefaults()
-        //println(defaults.objectForKey(classKey))
         var currentClass:ClassRoom!
-        if let data = defaults.objectForKey(classKey) as? NSData{
-            //let unarc = NSKeyedUnarchiver(forReadingWithData: data)
-            //unarc.setClass(Class.self, forClassName: "Class")
-            currentClass = NSKeyedUnarchiver.unarchiveObjectWithData(data) as ClassRoom
-            println("entering \(currentClass.students)")
-            //Class.sharedInstance.students = currentClass.students
-            //Class.sharedInstance.teacher = currentClass.teacher
+        let data: AnyObject? = PFUser.currentUser()?["class"]
+        if let data: AnyObject = data{
+            currentClass = NSKeyedUnarchiver.unarchiveObjectWithData(data as! NSData)as! ClassRoom
             return currentClass
-            
         } else {
             var newClass = ClassRoom()
             newClass.students = [Student]()
             var encodedObject: NSData = NSKeyedArchiver.archivedDataWithRootObject(newClass)
-            defaults.setObject(encodedObject, forKey: classKey)
-            defaults.synchronize()
             return newClass
         }
     }
