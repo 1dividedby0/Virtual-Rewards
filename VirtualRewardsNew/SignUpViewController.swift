@@ -53,20 +53,22 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
                     self.performSegueWithIdentifier("fromSignUp", sender: self)
             }else{
                 //println(error.userInfo!["error"] as NSString)
-                let color = UIColor.orangeColor()
-                self.pandaImage.hidden = false
-                self.pandaImage.contentMode = .ScaleAspectFit
-                self.errorLabel.textColor = color
-                self.errorLabel.hidden = false
+                var alert = UIAlertView()
+                alert.title = "Something went wrong..."
+                alert.message = error!.userInfo!["error"] as? String
+                alert.addButtonWithTitle("OK")
                 if error!.userInfo!["error"]?.rangeOfString("already taken") != nil{
-                self.errorLabel.text = "An evil panda has consumed this account."
+                alert.message = "An evil panda has consumed this account."
                 }
+                alert.show()
             }
         }
         }else{
-            self.errorLabel.textColor = UIColor.redColor()
-            self.errorLabel.hidden = false
-            self.errorLabel.text = "Confirmation password isn't the same"
+            var alert = UIAlertView()
+            alert.title = "Something went wrong..."
+            alert.message = "Confirmation password doesn't match"
+            alert.addButtonWithTitle("OK")
+            alert.show()
         }
     }
     

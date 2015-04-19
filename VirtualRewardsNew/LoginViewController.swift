@@ -48,17 +48,15 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
             if user != nil{
                 self.performSegueWithIdentifier("fromLogin", sender: self)
             }else{
-                println(user)
-                println(self.passwordTextField.text)
-                self.errorLabel.textColor = UIColor.redColor()
-                self.errorLabel.hidden = false
-                let error = error!.userInfo!["error"] as! NSString
-                self.errorLabel.text = "Whoops! \(error)"
+                var alert = UIAlertView()
+                alert.title = "Invalid Login"
+                alert.message = error!.userInfo!["error"] as? String
+                alert.addButtonWithTitle("OK")
+                alert.show()
             }
         }
     }
 
-    
     func textFieldShouldReturn(textField: UITextField) -> Bool {
         if textField.returnKeyType == UIReturnKeyType.Next{
             self.passwordTextField.becomeFirstResponder()

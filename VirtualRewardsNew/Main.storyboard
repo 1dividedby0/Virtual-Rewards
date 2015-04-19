@@ -148,7 +148,7 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="TIO-7a-7Cp">
                                 <rect key="frame" x="275" y="270" width="51" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="51" id="iau-Lv-H2c"/>
+                                    <constraint firstAttribute="width" constant="51" id="vEy-xP-BXl"/>
                                 </constraints>
                                 <state key="normal" title="Login">
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
@@ -184,18 +184,17 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="TIO-7a-7Cp" firstAttribute="centerX" secondItem="2kd-r1-vWp" secondAttribute="centerX" id="2T3-2I-cEH"/>
                             <constraint firstItem="FhG-co-5Bp" firstAttribute="top" secondItem="wFZ-66-wrG" secondAttribute="bottom" constant="2" id="5ug-77-c9U"/>
                             <constraint firstItem="FhG-co-5Bp" firstAttribute="centerX" secondItem="wFZ-66-wrG" secondAttribute="centerX" id="9Oe-Q8-WrE"/>
                             <constraint firstItem="2kd-r1-vWp" firstAttribute="trailing" secondItem="pRC-4R-hRU" secondAttribute="trailing" id="DPd-co-Hep"/>
-                            <constraint firstItem="TIO-7a-7Cp" firstAttribute="top" secondItem="2kd-r1-vWp" secondAttribute="bottom" constant="8" symbolic="YES" id="FJm-ni-9x4"/>
                             <constraint firstItem="pRC-4R-hRU" firstAttribute="top" secondItem="FhG-co-5Bp" secondAttribute="bottom" constant="23" id="MT6-1s-aV8"/>
                             <constraint firstItem="pRC-4R-hRU" firstAttribute="leading" secondItem="2kd-r1-vWp" secondAttribute="leading" id="O3i-lh-TcO"/>
                             <constraint firstItem="30C-eq-LQQ" firstAttribute="top" secondItem="OAG-B9-VH9" secondAttribute="bottom" constant="59" id="PE9-se-LNi"/>
                             <constraint firstItem="2kd-r1-vWp" firstAttribute="centerX" secondItem="OAG-B9-VH9" secondAttribute="centerX" constant="-1.5" id="QHf-jD-Ng5"/>
                             <constraint firstItem="2kd-r1-vWp" firstAttribute="top" secondItem="pRC-4R-hRU" secondAttribute="bottom" constant="8" symbolic="YES" id="RF0-hW-NBU"/>
-                            <constraint firstAttribute="trailing" secondItem="TIO-7a-7Cp" secondAttribute="trailing" constant="274" id="XDj-7m-0wF"/>
-                            <constraint firstItem="TIO-7a-7Cp" firstAttribute="leading" secondItem="KKf-5M-FcT" secondAttribute="leading" constant="275" id="YGo-24-omB"/>
                             <constraint firstItem="pRC-4R-hRU" firstAttribute="centerX" secondItem="FhG-co-5Bp" secondAttribute="centerX" id="bW2-4C-0qp"/>
+                            <constraint firstItem="TIO-7a-7Cp" firstAttribute="top" secondItem="2kd-r1-vWp" secondAttribute="bottom" constant="8" symbolic="YES" id="gYQ-F3-Oc7"/>
                             <constraint firstItem="wFZ-66-wrG" firstAttribute="top" secondItem="2dJ-z1-Enq" secondAttribute="bottom" constant="8" symbolic="YES" id="qtZ-Dp-pwP"/>
                             <constraint firstItem="wFZ-66-wrG" firstAttribute="centerX" secondItem="KKf-5M-FcT" secondAttribute="centerX" id="sRd-KI-DAY"/>
                         </constraints>
