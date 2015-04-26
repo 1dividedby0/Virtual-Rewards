@@ -2,12 +2,12 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
-	<key>DTXcodeBuild</key>
-	<string>6D570</string>
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleExecutable</key>
 	<string>$(EXECUTABLE_NAME)</string>
+	<key>CFBundleIcons</key>
+	<dict/>
 	<key>CFBundleIcons~ipad</key>
 	<dict/>
 	<key>CFBundleIdentifier</key>
@@ -32,7 +32,9 @@
 		</dict>
 	</array>
 	<key>CFBundleVersion</key>
-	<string>1.5</string>
+	<string>1.6</string>
+	<key>DTXcodeBuild</key>
+	<string>6D570</string>
 	<key>FacebookAppID</key>
 	<string>1610805219157099</string>
 	<key>FacebookDisplayName</key>

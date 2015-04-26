@@ -7,11 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		E42274B31ADB6D0600AC36EA /* parse-library-1.7.1 in Resources */ = {isa = PBXBuildFile; fileRef = E42274B21ADB6D0600AC36EA /* parse-library-1.7.1 */; };
 		E42274BD1ADCA55B00AC36EA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E42274BC1ADCA55B00AC36EA /* Bolts.framework */; };
 		E44399411AD497A600BA12EF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44399401AD497A600BA12EF /* SignUpViewController.swift */; };
-		E443CF8E1ADB3DF9008D69B6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E443CF8D1ADB3DF9008D69B6 /* Main.storyboard */; };
-		E443CF901ADB3E06008D69B6 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E443CF8F1ADB3E06008D69B6 /* LaunchScreen.xib */; };
 		E443CF911ADB4C65008D69B6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F84CB31AC8D9F800DFA142 /* AudioToolbox.framework */; };
 		E443CF921ADB4C6D008D69B6 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F84CB51AC8DA0800DFA142 /* CFNetwork.framework */; };
 		E443CF931ADB4C80008D69B6 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F84CB71AC8DA1600DFA142 /* CoreGraphics.framework */; };
@@ -24,9 +21,11 @@
 		E443CF9A1ADB4CBD008D69B6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F84CC51AC8DA5800DFA142 /* libz.dylib */; };
 		E443CF9B1ADB4CC7008D69B6 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F84CC71AC8DA6B00DFA142 /* libsqlite3.dylib */; };
 		E443CFA01ADB5744008D69B6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E443CF9F1ADB5744008D69B6 /* Foundation.framework */; };
+		E474F8A41AE87FE90015B467 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E474F8A31AE87FE90015B467 /* Parse.framework */; };
+		E474F8A51AE885EF0015B467 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E443CF8D1ADB3DF9008D69B6 /* Main.storyboard */; };
+		E474F8A61AE8884F0015B467 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4CF5C151AB4A39400A87384 /* Images.xcassets */; };
 		E4B3EB521AB6194E00F9B124 /* AddStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B3EB511AB6194E00F9B124 /* AddStudentViewController.swift */; };
 		E4CF5C0F1AB4A39400A87384 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CF5C0E1AB4A39400A87384 /* AppDelegate.swift */; };
-		E4CF5C161AB4A39400A87384 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4CF5C151AB4A39400A87384 /* Images.xcassets */; };
 		E4CF5C251AB4A39400A87384 /* VirtualRewardsNewTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CF5C241AB4A39400A87384 /* VirtualRewardsNewTests.swift */; };
 		E4CF5C311AB4A3DC00A87384 /* VirtualRewardsClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CF5C301AB4A3DC00A87384 /* VirtualRewardsClient.swift */; };
 		E4CF5C331AB4A3F200A87384 /* Student.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CF5C321AB4A3F200A87384 /* Student.swift */; };
@@ -36,8 +35,6 @@
 		E4CF5C3B1AB4AF4B00A87384 /* StudentTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4CF5C3A1AB4AF4B00A87384 /* StudentTableViewCell.swift */; };
 		E4F84CA31AC6FD1C00DFA142 /* RewardsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F84CA21AC6FD1C00DFA142 /* RewardsViewController.swift */; };
 		E4F84CCE1ACCD96D00DFA142 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4F84CCD1ACCD96D00DFA142 /* LoginViewController.swift */; };
-		E4F8EB861AE21E54005894DE /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E42274B81ADC936200AC36EA /* Parse.framework */; };
-		E4F8EB871AE21EAB005894DE /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E42274B81ADC936200AC36EA /* Parse.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,13 +49,13 @@
 
 /* Begin PBXFileReference section */
 		E42274B21ADB6D0600AC36EA /* parse-library-1.7.1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "parse-library-1.7.1"; sourceTree = "<group>"; };
-		E42274B81ADC936200AC36EA /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../Downloads/parse-library-1.7.1 2/Parse.framework"; sourceTree = "<group>"; };
 		E42274BA1ADCA52000AC36EA /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		E42274BC1ADCA55B00AC36EA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../Downloads/parse-library-1.7.1 2/Bolts.framework"; sourceTree = "<group>"; };
 		E44399401AD497A600BA12EF /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E443CF8D1ADB3DF9008D69B6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		E443CF8F1ADB3E06008D69B6 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		E443CF9F1ADB5744008D69B6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E474F8A31AE87FE90015B467 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../Downloads/parse-library-1.7.1 4/Parse.framework"; sourceTree = "<group>"; };
 		E4B3EB511AB6194E00F9B124 /* AddStudentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStudentViewController.swift; sourceTree = "<group>"; };
 		E4CF5C091AB4A39400A87384 /* VirtualRewardsNew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualRewardsNew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4CF5C0D1AB4A39400A87384 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -94,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4F8EB871AE21EAB005894DE /* Parse.framework in Frameworks */,
+				E474F8A41AE87FE90015B467 /* Parse.framework in Frameworks */,
 				E443CFA01ADB5744008D69B6 /* Foundation.framework in Frameworks */,
 				E443CF9B1ADB4CC7008D69B6 /* libsqlite3.dylib in Frameworks */,
 				E443CF9A1ADB4CBD008D69B6 /* libz.dylib in Frameworks */,
@@ -115,7 +112,6 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E4F8EB861AE21E54005894DE /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -125,8 +121,8 @@
 		E4CF5C001AB4A39400A87384 = {
 			isa = PBXGroup;
 			children = (
+				E474F8A31AE87FE90015B467 /* Parse.framework */,
 				E42274BC1ADCA55B00AC36EA /* Bolts.framework */,
-				E42274B81ADC936200AC36EA /* Parse.framework */,
 				E42274B21ADB6D0600AC36EA /* parse-library-1.7.1 */,
 				E4F84CC91AC8DAA500DFA142 /* libraries */,
 				E4CF5C2E1AB4A3A900A87384 /* API */,
@@ -310,10 +306,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E443CF901ADB3E06008D69B6 /* LaunchScreen.xib in Resources */,
-				E443CF8E1ADB3DF9008D69B6 /* Main.storyboard in Resources */,
-				E42274B31ADB6D0600AC36EA /* parse-library-1.7.1 in Resources */,
-				E4CF5C161AB4A39400A87384 /* Images.xcassets in Resources */,
+				E474F8A61AE8884F0015B467 /* Images.xcassets in Resources */,
+				E474F8A51AE885EF0015B467 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -464,6 +458,10 @@
 					2,
 					"/Users/dhruvm/Downloads/parse-library-1.7.1",
 					2,
+					"/Users/dhruvm/Downloads/parse-library-1.7.1",
+					3,
+					"/Users/dhruvm/Downloads/parse-library-1.7.1",
+					4,
 				);
 				INFOPLIST_FILE = VirtualRewardsNew/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
@@ -495,6 +493,10 @@
 					2,
 					"/Users/dhruvm/Downloads/parse-library-1.7.1",
 					2,
+					"/Users/dhruvm/Downloads/parse-library-1.7.1",
+					3,
+					"/Users/dhruvm/Downloads/parse-library-1.7.1",
+					4,
 				);
 				INFOPLIST_FILE = VirtualRewardsNew/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
