@@ -21,7 +21,6 @@ class ClassRoom: NSObject, NSCoding{
         aCoder.encodeObject(students, forKey: studentsKey)
     }
     override init() {
-        
     }
     required init(coder aDecoder: NSCoder) {
         students = aDecoder.decodeObjectForKey(studentsKey) as! [Student]!

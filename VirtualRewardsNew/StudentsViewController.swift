@@ -51,8 +51,8 @@ class StudentsViewController: UIViewController, UITableViewDataSource, UITableVi
         searchBar.barTintColor = UIColor.cyanColor()
         }
     func refresh(){
-        tableView.reloadData()
         refreshControl.endRefreshing()
+        tableView.reloadData()
         VirtualRewardsClient.sharedInstance.getClass().printClass()
     }
     func reloadTotal(){
