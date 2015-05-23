@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="7531" systemVersion="14D131" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="fLd-Pr-wIb">
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="7520"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <scenes>
         <!--Students View Controller-->
@@ -107,11 +108,88 @@
                         <outlet property="addStudentButton" destination="azJ-Mk-yC3" id="ceg-7v-rBc"/>
                         <outlet property="logoutButton" destination="yn7-OP-xfl" id="gC9-df-z2q"/>
                         <outlet property="tableView" destination="Af9-H0-RNy" id="pX6-Zd-WXR"/>
+                        <segue destination="m9B-go-Uih" kind="show" identifier="toDetails" id="swN-D4-laR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1152" y="372"/>
+        </scene>
+        <!--Student Details View Controller-->
+        <scene sceneID="O6Y-Jc-Yun">
+            <objects>
+                <viewController id="m9B-go-Uih" customClass="StudentDetailsViewController" customModule="VirtualRewardsNew" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="A5k-Nw-4C5"/>
+                        <viewControllerLayoutGuide type="bottom" id="VL9-2J-Atk"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="II3-hM-YkM">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="s3v-aS-S9E">
+                                <rect key="frame" x="44" y="93" width="211" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="211" id="MrS-S3-GO3"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mHu-SB-qps">
+                                <rect key="frame" x="212" y="385" width="176" height="30"/>
+                                <state key="normal" title="Send Student their Points">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="sendEmailButton:" destination="m9B-go-Uih" eventType="touchUpInside" id="STF-sz-dJV"/>
+                                    <segue destination="apl-nB-EGv" kind="presentation" id="OnH-j6-73b"/>
+                                </connections>
+                            </button>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tHh-Ws-qtK">
+                                <rect key="frame" x="44" y="186" width="205" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="205" id="IyA-XW-rhM"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="s3v-aS-S9E" firstAttribute="leading" secondItem="tHh-Ws-qtK" secondAttribute="leading" id="43C-nB-HM7"/>
+                            <constraint firstItem="s3v-aS-S9E" firstAttribute="leading" secondItem="II3-hM-YkM" secondAttribute="leadingMargin" constant="28" id="EsP-Og-QFD"/>
+                            <constraint firstAttribute="centerY" secondItem="mHu-SB-qps" secondAttribute="centerY" constant="-100" id="fuv-hG-WP2"/>
+                            <constraint firstAttribute="centerX" secondItem="mHu-SB-qps" secondAttribute="centerX" id="kzB-AW-5u5"/>
+                            <constraint firstItem="s3v-aS-S9E" firstAttribute="top" secondItem="A5k-Nw-4C5" secondAttribute="bottom" constant="29" id="qM2-mP-W6O"/>
+                            <constraint firstItem="tHh-Ws-qtK" firstAttribute="top" secondItem="s3v-aS-S9E" secondAttribute="bottom" constant="63" id="yoW-Yi-jS8"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="emailTextField" destination="tHh-Ws-qtK" id="dcS-sH-915"/>
+                        <outlet property="nameTextField" destination="s3v-aS-S9E" id="LLp-aA-EAJ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="IYz-Zs-dNl" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1247" y="1134"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Kwr-Bf-MZZ">
+            <objects>
+                <viewController id="apl-nB-EGv" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Jya-6A-a0H"/>
+                        <viewControllerLayoutGuide type="bottom" id="L3E-m8-aba"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Mui-s0-ruN">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="umT-mc-BTg" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1895" y="1134"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="ccN-G1-pkf">

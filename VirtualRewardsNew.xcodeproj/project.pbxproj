@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		E408695B1AFE609000E25DCF /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E408695A1AFE609000E25DCF /* Parse.framework */; };
+		E40869931B103BC700E25DCF /* StudentDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E40869921B103BC700E25DCF /* StudentDetailsViewController.swift */; };
 		E42274BD1ADCA55B00AC36EA /* Bolts.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E42274BC1ADCA55B00AC36EA /* Bolts.framework */; };
 		E44399411AD497A600BA12EF /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E44399401AD497A600BA12EF /* SignUpViewController.swift */; };
 		E443CF911ADB4C65008D69B6 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F84CB31AC8D9F800DFA142 /* AudioToolbox.framework */; };
@@ -49,6 +50,7 @@
 
 /* Begin PBXFileReference section */
 		E408695A1AFE609000E25DCF /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Parse.framework; path = "../../Downloads/parse-library-1.7.2/Parse.framework"; sourceTree = "<group>"; };
+		E40869921B103BC700E25DCF /* StudentDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StudentDetailsViewController.swift; sourceTree = "<group>"; };
 		E42274B21ADB6D0600AC36EA /* parse-library-1.7.1 */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "parse-library-1.7.1"; sourceTree = "<group>"; };
 		E42274BA1ADCA52000AC36EA /* libstdc++.6.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = "libstdc++.6.dylib"; path = "usr/lib/libstdc++.6.dylib"; sourceTree = SDKROOT; };
 		E42274BC1ADCA55B00AC36EA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../Downloads/parse-library-1.7.1 2/Bolts.framework"; sourceTree = "<group>"; };
@@ -155,6 +157,7 @@
 				E4F84CA21AC6FD1C00DFA142 /* RewardsViewController.swift */,
 				E4F84CCD1ACCD96D00DFA142 /* LoginViewController.swift */,
 				E44399401AD497A600BA12EF /* SignUpViewController.swift */,
+				E40869921B103BC700E25DCF /* StudentDetailsViewController.swift */,
 				E4CF5C0C1AB4A39400A87384 /* Supporting Files */,
 				E4F84CCA1AC8DBC700DFA142 /* VirtualRewardsNew-Bridging-Header.h */,
 			);
@@ -330,6 +333,7 @@
 				E4B3EB521AB6194E00F9B124 /* AddStudentViewController.swift in Sources */,
 				E4CF5C371AB4A40700A87384 /* Teacher.swift in Sources */,
 				E4CF5C311AB4A3DC00A87384 /* VirtualRewardsClient.swift in Sources */,
+				E40869931B103BC700E25DCF /* StudentDetailsViewController.swift in Sources */,
 				E4CF5C391AB4A6F300A87384 /* StudentsViewController.swift in Sources */,
 				E4CF5C0F1AB4A39400A87384 /* AppDelegate.swift in Sources */,
 				E4CF5C3B1AB4AF4B00A87384 /* StudentTableViewCell.swift in Sources */,

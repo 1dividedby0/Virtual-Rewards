@@ -17,6 +17,7 @@ class StudentsViewController: UIViewController, UITableViewDataSource, UITableVi
     var studentsToBeDisplayed:[Student] = [Student]()
     var refreshControl: UIRefreshControl!
     var timer:NSTimer = NSTimer()
+    var selectedStudent:Student!
     override func viewWillAppear(animated: Bool) {
         studentsToBeDisplayed = VirtualRewardsClient.sharedInstance.getClass().students
         var total = VirtualRewardsClient.sharedInstance.getClass().findTotal()
@@ -108,7 +109,12 @@ class StudentsViewController: UIViewController, UITableViewDataSource, UITableVi
         self.refreshControl.attributedTitle = NSAttributedString(string: "Total Points: \(total)")
         return studentsToBeDisplayed.count
     }
-    
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        self.selectedStudent = studentsToBeDisplayed[indexPath.row]
+        println(self.selectedStudent)
+        var destination = StudentDetailsViewController()
+        performSegueWithIdentifier("toDetails", sender: self)
+    }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let currentClass = VirtualRewardsClient.sharedInstance.getClass()
         let cell = tableView.dequeueReusableCellWithIdentifier("studentCell") as! StudentTableViewCell
@@ -122,14 +128,20 @@ class StudentsViewController: UIViewController, UITableViewDataSource, UITableVi
         cell.reload()
         return cell
     }
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
+        
+        if segue.identifier == "toDetails"{
+          var destination = segue.destinationViewController as? StudentDetailsViewController
+          // selectedStudent appears to be nil here because t
+          println(self.selectedStudent)
+         destination!.name = self.selectedStudent.name
+         destination!.email = self.selectedStudent.email
+        }
     }
-    */
+    
 
 }
