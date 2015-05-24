@@ -140,6 +140,7 @@ class StudentsViewController: UIViewController, UITableViewDataSource, UITableVi
           println(self.selectedStudent)
          destination!.name = self.selectedStudent.name
          destination!.email = self.selectedStudent.email
+         destination!.student = self.selectedStudent
         }
     }
     

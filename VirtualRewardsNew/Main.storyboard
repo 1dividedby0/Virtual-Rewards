@@ -142,7 +142,6 @@
                                 </state>
                                 <connections>
                                     <action selector="sendEmailButton:" destination="m9B-go-Uih" eventType="touchUpInside" id="STF-sz-dJV"/>
-                                    <segue destination="apl-nB-EGv" kind="presentation" id="OnH-j6-73b"/>
                                 </connections>
                             </button>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tHh-Ws-qtK">
@@ -172,24 +171,6 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IYz-Zs-dNl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1247" y="1134"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="Kwr-Bf-MZZ">
-            <objects>
-                <viewController id="apl-nB-EGv" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Jya-6A-a0H"/>
-                        <viewControllerLayoutGuide type="bottom" id="L3E-m8-aba"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="Mui-s0-ruN">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="umT-mc-BTg" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1895" y="1134"/>
         </scene>
         <!--Login View Controller-->
         <scene sceneID="ccN-G1-pkf">

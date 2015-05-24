@@ -7,11 +7,13 @@
 //
 
 import UIKit
-class StudentDetailsViewController: UIViewController {
+import MessageUI
+class StudentDetailsViewController: UIViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
     var name:String!
     var email:String!
+    var student:Student!
     override func viewDidLoad() {
         super.viewDidLoad()
         println(nameTextField)
@@ -38,8 +40,17 @@ class StudentDetailsViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func sendEmailButton(sender: AnyObject) {
-        
+        var picker = MFMailComposeViewController()
+        picker.mailComposeDelegate = self
+        picker.setSubject("Your points")
+        picker.setToRecipients([student.email])
+        picker.setMessageBody("You have \(student.points) points in your class", isHTML: true)
+        presentViewController(picker, animated: true, completion: nil)
     }
 
     
