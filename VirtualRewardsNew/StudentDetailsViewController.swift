@@ -16,9 +16,10 @@ class StudentDetailsViewController: UIViewController, MFMailComposeViewControlle
     var student:Student!
     override func viewDidLoad() {
         super.viewDidLoad()
-        println(nameTextField)
         self.nameTextField.text = name
         self.emailTextField.text = email
+        self.nameTextField.delegate = self
+        self.emailTextField.delegate = self
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Done, target: self, action: "back:")
         self.navigationItem.leftBarButtonItem = newBackButton;
@@ -39,7 +40,10 @@ class StudentDetailsViewController: UIViewController, MFMailComposeViewControlle
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
     func mailComposeController(controller: MFMailComposeViewController!, didFinishWithResult result: MFMailComposeResult, error: NSError!) {
         dismissViewControllerAnimated(true, completion: nil)
     }

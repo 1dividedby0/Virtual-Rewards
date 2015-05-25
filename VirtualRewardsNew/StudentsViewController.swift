@@ -111,7 +111,6 @@ class StudentsViewController: UIViewController, UITableViewDataSource, UITableVi
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         self.selectedStudent = studentsToBeDisplayed[indexPath.row]
-        println(self.selectedStudent)
         var destination = StudentDetailsViewController()
         performSegueWithIdentifier("toDetails", sender: self)
     }
@@ -137,7 +136,6 @@ class StudentsViewController: UIViewController, UITableViewDataSource, UITableVi
         if segue.identifier == "toDetails"{
           var destination = segue.destinationViewController as? StudentDetailsViewController
           // selectedStudent appears to be nil here because t
-          println(self.selectedStudent)
          destination!.name = self.selectedStudent.name
          destination!.email = self.selectedStudent.email
          destination!.student = self.selectedStudent
