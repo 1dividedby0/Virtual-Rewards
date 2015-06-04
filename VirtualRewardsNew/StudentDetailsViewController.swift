@@ -49,6 +49,14 @@ class StudentDetailsViewController: UIViewController, MFMailComposeViewControlle
     }
     
     @IBAction func sendEmailButton(sender: AnyObject) {
+        var students = VirtualRewardsClient.sharedInstance.getClass()
+        for var i = 0; i < students.students.count; i++ {
+            if self.name == students.students[i].name{
+                students.students[i].name = nameTextField.text
+                students.students[i].email = emailTextField.text
+                VirtualRewardsClient.sharedInstance.updateSavedClass(students)
+            }
+        }
         var picker = MFMailComposeViewController()
         picker.mailComposeDelegate = self
         picker.setSubject("Your points")
@@ -62,6 +70,7 @@ class StudentDetailsViewController: UIViewController, MFMailComposeViewControlle
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        
     }
     
 
