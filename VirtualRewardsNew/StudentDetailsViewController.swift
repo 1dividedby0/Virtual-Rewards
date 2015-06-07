@@ -60,7 +60,7 @@ class StudentDetailsViewController: UIViewController, MFMailComposeViewControlle
         var picker = MFMailComposeViewController()
         picker.mailComposeDelegate = self
         picker.setSubject("Your points")
-        picker.setToRecipients([student.email])
+        picker.setToRecipients([emailTextField.text])
         picker.setMessageBody("You have \(student.points) points in your class", isHTML: true)
         presentViewController(picker, animated: true, completion: nil)
     }

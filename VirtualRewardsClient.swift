@@ -44,7 +44,12 @@ class VirtualRewardsClient{
         var currentUser:PFUser = PFUser.currentUser()!
         currentUser["class"] = encodedObject
         currentUser.saveInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
-            if error == nil{
+            if error != nil && success == false{
+                var alert = UIAlertView()
+                alert.title = "Something went wrong"
+                alert.message = error!.userInfo!["error"] as? String
+                alert.addButtonWithTitle("OK")
+                alert.show()
             }
         }
     }

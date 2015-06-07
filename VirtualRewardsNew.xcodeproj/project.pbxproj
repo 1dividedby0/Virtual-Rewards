@@ -23,6 +23,7 @@
 		E443CF9A1ADB4CBD008D69B6 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F84CC51AC8DA5800DFA142 /* libz.dylib */; };
 		E443CF9B1ADB4CC7008D69B6 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E4F84CC71AC8DA6B00DFA142 /* libsqlite3.dylib */; };
 		E443CFA01ADB5744008D69B6 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E443CF9F1ADB5744008D69B6 /* Foundation.framework */; };
+		E46B586B1B211E91007800A7 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = E46B586A1B211E91007800A7 /* LaunchScreen.xib */; };
 		E474F8A51AE885EF0015B467 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E443CF8D1ADB3DF9008D69B6 /* Main.storyboard */; };
 		E474F8A61AE8884F0015B467 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E4CF5C151AB4A39400A87384 /* Images.xcassets */; };
 		E4B3EB521AB6194E00F9B124 /* AddStudentViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B3EB511AB6194E00F9B124 /* AddStudentViewController.swift */; };
@@ -56,8 +57,8 @@
 		E42274BC1ADCA55B00AC36EA /* Bolts.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Bolts.framework; path = "../../Downloads/parse-library-1.7.1 2/Bolts.framework"; sourceTree = "<group>"; };
 		E44399401AD497A600BA12EF /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		E443CF8D1ADB3DF9008D69B6 /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
-		E443CF8F1ADB3E06008D69B6 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		E443CF9F1ADB5744008D69B6 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		E46B586A1B211E91007800A7 /* LaunchScreen.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchScreen.xib; sourceTree = "<group>"; };
 		E4B3EB511AB6194E00F9B124 /* AddStudentViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddStudentViewController.swift; sourceTree = "<group>"; };
 		E4CF5C091AB4A39400A87384 /* VirtualRewardsNew.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VirtualRewardsNew.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E4CF5C0D1AB4A39400A87384 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -149,11 +150,11 @@
 			children = (
 				E4CF5C0E1AB4A39400A87384 /* AppDelegate.swift */,
 				E4CF5C381AB4A6F300A87384 /* StudentsViewController.swift */,
-				E443CF8F1ADB3E06008D69B6 /* LaunchScreen.xib */,
 				E443CF8D1ADB3DF9008D69B6 /* Main.storyboard */,
 				E4CF5C151AB4A39400A87384 /* Images.xcassets */,
 				E4CF5C3A1AB4AF4B00A87384 /* StudentTableViewCell.swift */,
 				E4B3EB511AB6194E00F9B124 /* AddStudentViewController.swift */,
+				E46B586A1B211E91007800A7 /* LaunchScreen.xib */,
 				E4F84CA21AC6FD1C00DFA142 /* RewardsViewController.swift */,
 				E4F84CCD1ACCD96D00DFA142 /* LoginViewController.swift */,
 				E44399401AD497A600BA12EF /* SignUpViewController.swift */,
@@ -311,6 +312,7 @@
 			files = (
 				E474F8A61AE8884F0015B467 /* Images.xcassets in Resources */,
 				E474F8A51AE885EF0015B467 /* Main.storyboard in Resources */,
+				E46B586B1B211E91007800A7 /* LaunchScreen.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
