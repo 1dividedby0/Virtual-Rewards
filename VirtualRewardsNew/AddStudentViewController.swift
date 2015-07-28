@@ -27,10 +27,7 @@ class AddStudentViewController: UIViewController, UITextFieldDelegate {
     }
     
     func edit(){
-        println("dsg")
-        println(namesTextField.text)
         if namesTextField.text.isEmpty == false{
-            println("editing")
             doneButton.enabled = true
         }else{
             doneButton.enabled = false

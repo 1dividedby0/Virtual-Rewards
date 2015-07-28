@@ -11,6 +11,8 @@ import AVFoundation
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 
+    var loginDefaultsKey: String = "LOGINDEFAULTSABCGHICDEXYZ"
+    
     @IBOutlet weak var pigImage: UIImageView!
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
@@ -36,6 +38,10 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         let image:UIImage = pigImage.image!
         pigImage.contentMode = .ScaleAspectFit
+        if let data = NSUserDefaults.standardUserDefaults().arrayForKey(loginDefaultsKey){
+        self.usernameTextField.text = data[0] as! String
+        self.passwordTextField.text = data[1] as! String
+        }
     }
 
     override func didReceiveMemoryWarning() {
@@ -46,6 +52,8 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
     @IBAction func loginAction(sender: AnyObject) {
         PFUser.logInWithUsernameInBackground(usernameTextField.text, password: passwordTextField.text) { (user: PFUser?, error: NSError?) -> Void in
             if user != nil{
+                var defaults = NSUserDefaults.standardUserDefaults()
+                defaults.setObject([self.usernameTextField.text, self.passwordTextField.text], forKey: self.loginDefaultsKey)
                 self.performSegueWithIdentifier("fromLogin", sender: self)
             }else{
                 var alert = UIAlertView()

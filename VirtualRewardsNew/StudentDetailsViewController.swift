@@ -49,6 +49,7 @@ class StudentDetailsViewController: UIViewController, MFMailComposeViewControlle
     }
     
     @IBAction func sendEmailButton(sender: AnyObject) {
+        if (MFMailComposeViewController.canSendMail()){
         var students = VirtualRewardsClient.sharedInstance.getClass()
         for var i = 0; i < students.students.count; i++ {
             if self.name == students.students[i].name{
@@ -56,13 +57,20 @@ class StudentDetailsViewController: UIViewController, MFMailComposeViewControlle
                 students.students[i].email = emailTextField.text
                 VirtualRewardsClient.sharedInstance.updateSavedClass(students)
             }
-        }
+        }           
         var picker = MFMailComposeViewController()
         picker.mailComposeDelegate = self
         picker.setSubject("Your points")
         picker.setToRecipients([emailTextField.text])
         picker.setMessageBody("You have \(student.points) points in your class", isHTML: true)
         presentViewController(picker, animated: true, completion: nil)
+        }else{
+            var alert = UIAlertView()
+            alert.title = "No Account Found"
+            alert.message = "There is currently no ICloud account signed into this device"
+            alert.addButtonWithTitle("OK")
+            alert.show()
+        }
     }
 
     
