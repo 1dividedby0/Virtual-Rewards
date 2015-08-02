@@ -16,7 +16,7 @@ class ClassRoom: NSObject, NSCoding{
     let defaults = NSUserDefaults.standardUserDefaults()
     
     var students:[Student] = [Student]()
-
+    var rewards:[Reward] = [Reward]()
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(students, forKey: studentsKey)
     }

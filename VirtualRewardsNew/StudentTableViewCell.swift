@@ -43,7 +43,6 @@ class StudentTableViewCell: UITableViewCell {
         currentClass.students[index!] = student!
         VirtualRewardsClient.sharedInstance.updateSavedClass(currentClass)
         }else{
-        //currentClass.searchStudents[self.student!.name] = self.student!
         currentClass.updateStudent(self.student!)
         VirtualRewardsClient.sharedInstance.updateSavedClass(currentClass)
         }
