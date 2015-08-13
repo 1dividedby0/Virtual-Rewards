@@ -50,7 +50,10 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         if passwordTextField.text == confirmPasswordTextField.text{
         user.signUpInBackgroundWithBlock { (success: Bool, error: NSError?) -> Void in
             if error == nil{
-                    self.performSegueWithIdentifier("fromSignUp", sender: self)
+                myKeyChainWrapper.mySetObject(self.passwordTextField.text, forKey: kSecValueData)
+                myKeyChainWrapper.writeToKeychain()
+                defaults.setObject(self.usernameTextField.text, forKey: usernameKey)
+                self.performSegueWithIdentifier("fromSignUp", sender: self)
             }else{
                 //println(error.userInfo!["error"] as NSString)
                 var alert = UIAlertView()

@@ -11,6 +11,7 @@ import UIKit
 
 let classKey = "CLASS_KEY"
 let studentsKey = "STUDENTS_KEY"
+let rewardsKey = "REWARDS_KEY"
 class ClassRoom: NSObject, NSCoding{
     var total:Int = 0
     let defaults = NSUserDefaults.standardUserDefaults()
@@ -19,11 +20,13 @@ class ClassRoom: NSObject, NSCoding{
     var rewards:[Reward] = [Reward]()
     func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(students, forKey: studentsKey)
+        aCoder.encodeObject(rewards, forKey: rewardsKey)
     }
     override init() {
     }
     required init(coder aDecoder: NSCoder) {
         students = aDecoder.decodeObjectForKey(studentsKey) as! [Student]!
+        //rewards = aDecoder.decodeObjectForKey(rewardsKey) as! [Reward]!
     }
     
     func findTotal() -> Int{
@@ -32,7 +35,15 @@ class ClassRoom: NSObject, NSCoding{
         }
         return self.total
     }
-    
+    func updateReward(reward: Reward){
+        var index = 0
+        for rew in rewards {
+            if rew.name == reward.name{
+                rewards[index] = reward
+            }
+            index++
+        }
+    }
     func updateStudent(student:Student){
         var index = 0
         for stud in students{
@@ -47,10 +58,11 @@ class ClassRoom: NSObject, NSCoding{
         self.students.append(Student(name: name, startingPoints: value, email: ""))
         VirtualRewardsClient.sharedInstance.updateSavedClass(self)
     }
-    
+    func addReward(name: String){
+        rewards.append(Reward(name:name))
+    }
     func addStudent(name: String){
         students.append(Student(name: name))
-        printClass()
     }
     
     func addStudents(students: [String]){

@@ -244,10 +244,24 @@
                                     <action selector="signUpAction:" destination="fLd-Pr-wIb" eventType="touchUpInside" id="THq-Wp-yEv"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWr-cr-UDJ">
+                                <rect key="frame" x="267" y="331" width="65" height="58"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="65" id="WVA-c9-4aM"/>
+                                    <constraint firstAttribute="height" constant="58" id="krj-cp-RhU"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="feature-touchid">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="touchIDAction:" destination="fLd-Pr-wIb" eventType="touchUpInside" id="s8Q-qG-Fth"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="TIO-7a-7Cp" firstAttribute="centerX" secondItem="2kd-r1-vWp" secondAttribute="centerX" constant="-1.5" id="2T3-2I-cEH"/>
+                            <constraint firstItem="JWr-cr-UDJ" firstAttribute="centerX" secondItem="OAG-B9-VH9" secondAttribute="centerX" id="2lw-DE-pxQ"/>
                             <constraint firstItem="FhG-co-5Bp" firstAttribute="top" secondItem="wFZ-66-wrG" secondAttribute="bottom" constant="2" id="5ug-77-c9U"/>
                             <constraint firstItem="FhG-co-5Bp" firstAttribute="centerX" secondItem="wFZ-66-wrG" secondAttribute="centerX" id="9Oe-Q8-WrE"/>
                             <constraint firstItem="2kd-r1-vWp" firstAttribute="trailing" secondItem="pRC-4R-hRU" secondAttribute="trailing" constant="1" id="DPd-co-Hep"/>
@@ -255,6 +269,7 @@
                             <constraint firstItem="pRC-4R-hRU" firstAttribute="top" secondItem="FhG-co-5Bp" secondAttribute="bottom" constant="8" id="MT6-1s-aV8"/>
                             <constraint firstItem="pRC-4R-hRU" firstAttribute="leading" secondItem="2kd-r1-vWp" secondAttribute="leading" constant="-1" id="O3i-lh-TcO"/>
                             <constraint firstItem="2kd-r1-vWp" firstAttribute="top" secondItem="pRC-4R-hRU" secondAttribute="bottom" constant="8" symbolic="YES" id="RF0-hW-NBU"/>
+                            <constraint firstItem="JWr-cr-UDJ" firstAttribute="top" secondItem="OAG-B9-VH9" secondAttribute="bottom" constant="8" symbolic="YES" id="YiY-8D-zhr"/>
                             <constraint firstItem="pRC-4R-hRU" firstAttribute="centerX" secondItem="FhG-co-5Bp" secondAttribute="centerX" id="bW2-4C-0qp"/>
                             <constraint firstItem="TIO-7a-7Cp" firstAttribute="top" secondItem="2kd-r1-vWp" secondAttribute="bottom" constant="8" id="gYQ-F3-Oc7"/>
                             <constraint firstItem="OAG-B9-VH9" firstAttribute="centerX" secondItem="TIO-7a-7Cp" secondAttribute="centerX" id="jKD-hX-Dmi"/>
@@ -263,6 +278,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="TouchIDButton" destination="JWr-cr-UDJ" id="HfY-5c-8G4"/>
                         <outlet property="logInButton" destination="TIO-7a-7Cp" id="koe-uh-G8s"/>
                         <outlet property="passwordTextField" destination="2kd-r1-vWp" id="QOI-aQ-VBc"/>
                         <outlet property="pigImage" destination="FhG-co-5Bp" id="Gha-QL-CCq"/>
@@ -499,6 +515,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="feature-touchid" width="328" height="296"/>
         <image name="hungry-panda" width="833" height="764"/>
         <image name="minus.icon" width="256" height="256"/>
         <image name="plus.icon" width="256" height="256"/>
