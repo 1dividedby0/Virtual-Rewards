@@ -7,14 +7,14 @@
 	<key>IDESourceControlProjectIdentifier</key>
 	<string>71F01D99-1080-4DC3-BE2B-E75D0C11D307</string>
 	<key>IDESourceControlProjectName</key>
-	<string>project</string>
+	<string>VirtualRewardsNew</string>
 	<key>IDESourceControlProjectOriginsDictionary</key>
 	<dict>
 		<key>386932F0F04B2FAA6449357BEB3F5831660D1BFF</key>
 		<string>https://github.com/1dividedby0/VirtualRewardsNew.git</string>
 	</dict>
 	<key>IDESourceControlProjectPath</key>
-	<string>VirtualRewardsNew.xcodeproj/project.xcworkspace</string>
+	<string>VirtualRewardsNew.xcodeproj</string>
 	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
 	<dict>
 		<key>386932F0F04B2FAA6449357BEB3F5831660D1BFF</key>

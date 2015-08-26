@@ -55,7 +55,7 @@ class ClassRoom: NSObject, NSCoding{
     }
     
     func addStudent(name: String, value: Int){
-        self.students.append(Student(name: name, startingPoints: value, email: ""))
+        self.students.append(Student(name: name, startingPoints: value, email: "", notes: ""))
         VirtualRewardsClient.sharedInstance.updateSavedClass(self)
     }
     func addReward(name: String){

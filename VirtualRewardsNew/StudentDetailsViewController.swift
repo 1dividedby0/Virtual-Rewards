@@ -11,18 +11,39 @@ import MessageUI
 class StudentDetailsViewController: UIViewController, MFMailComposeViewControllerDelegate, UITextFieldDelegate, UITextViewDelegate {
     @IBOutlet weak var nameTextField: UITextField!
     @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var notesTextField: UITextView!
     var name:String!
     var email:String!
+    var notes:String!
     var student:Student!
     override func viewDidLoad() {
         super.viewDidLoad()
         self.nameTextField.text = name
         self.emailTextField.text = email
+        self.notesTextField.text = notes
         self.nameTextField.delegate = self
         self.emailTextField.delegate = self
+        self.notesTextField.delegate = self
         self.navigationItem.hidesBackButton = true
         let newBackButton = UIBarButtonItem(title: "Back", style: UIBarButtonItemStyle.Done, target: self, action: "back:")
         self.navigationItem.leftBarButtonItem = newBackButton;
+        self.notesTextField.layer.borderWidth=1
+        self.notesTextField.layer.borderColor = UIColor.blackColor().CGColor
+        self.notesTextField.text="Notes"
+        self.notesTextField.textColor = UIColor.lightGrayColor()
+        
+    }
+    func textViewDidBeginEditing(textView: UITextView) {
+        if(textView.textColor == UIColor.lightGrayColor()){
+            textView.text = nil;
+            textView.textColor = UIColor.blackColor()
+        }
+    }
+    func textViewDidEndEditing(textView: UITextView) {
+        if textView.text.isEmpty {
+            textView.text = "Notes"
+            textView.textColor = UIColor.lightGrayColor()
+        }
     }
     func back(sender: UIBarButtonItem){
         // save new name
@@ -31,6 +52,7 @@ class StudentDetailsViewController: UIViewController, MFMailComposeViewControlle
             if self.name == students.students[i].name{
                 students.students[i].name = nameTextField.text
                 students.students[i].email = emailTextField.text
+                students.students[i].notes = notesTextField.text
                 VirtualRewardsClient.sharedInstance.updateSavedClass(students)
             }
         }
@@ -55,6 +77,7 @@ class StudentDetailsViewController: UIViewController, MFMailComposeViewControlle
             if self.name == students.students[i].name{
                 students.students[i].name = nameTextField.text
                 students.students[i].email = emailTextField.text
+                students.students[i].notes = notesTextField.text
                 VirtualRewardsClient.sharedInstance.updateSavedClass(students)
             }
         }           

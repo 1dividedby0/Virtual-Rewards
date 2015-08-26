@@ -138,6 +138,7 @@ class StudentsViewController: UIViewController, UITableViewDataSource, UITableVi
           // selectedStudent appears to be nil here because t
          destination!.name = self.selectedStudent.name
          destination!.email = self.selectedStudent.email
+         destination!.notes = self.selectedStudent.notes
          destination!.student = self.selectedStudent
         }
     }
